@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <div class="flex shadow-md items-center justify-between lg:hidden w-full px-4 border-b">
+        <a class="block w-max" href="/">
+            <h1 class="p-2 py-4 font-semibold text-lg">Study.<span class="text-blue-400">Material</span></h1>
+        </a>
+        <div class="w-[30px] h-[25px] bg-white flex flex-col items-center justify-between z-20" id="burger">
+            <div class="w-full bg-gray-700 rounded-full h-[4px] pointer-events-none"></div>
+            <div class="w-full bg-gray-700 rounded-full h-[4px]  pointer-events-none"></div>
+            <div class="w-full bg-gray-700 rounded-full h-[4px] pointer-events-none"></div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-4 h-[90vh] lg:h-screen overflow-hidden">
+        <div class="border-r p-2 fixed transition z-10 top-0 left-[-100%] lg:static w-full bg-white h-screen lg:w-auto"
+            id="nav">
+            <a class="border-b block" href="/">
+                <h1 class="p-2 py-4 font-semibold text-lg">Study.<span class="text-blue-400">Material</span></h1>
+            </a>
+            <ul class="w-full pt-4 space-y-2">
+                <li class="w-full">
+                    <a href="/" class="block p-4 hover:bg-blue-500 transition rounded hover:text-white">
+                        <span class="text-xl">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="ml-2">
+                            Home
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/notes" class="block p-4 hover:bg-blue-500 transition rounded hover:text-white">
+                        <span class="text-xl">
+                            <ion-icon name="documents-outline"></ion-icon>
+                        </span>
+                        <span class="ml-2">
+                            Notes
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/sample-paper" class="block p-4 hover:bg-blue-500 transition rounded hover:text-white">
+                        <span class="text-xl">
+                            <ion-icon name="newspaper-outline"></ion-icon>
+                        </span>
+                        <span class="ml-2">
+                            Sample Paper
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-span-3 bg-gray-100 overflow-hidden flex flex-col items-start justify-start">
+            <div class="w-full h-screen flex flex-col space-y-3 overflow-y-scroll snap-y snap-mandatory">
+                <% for( let i=0; i < data.length; i++ ) { %>
+                    <div class="w-full relative flex flex-col min-h-[90vh] lg:h-screen bg-white rounded snap-start">
+                        <h2 class="text-xl p-4 border-b">
+                            <%= data[i].title %>
+                        </h2>
+                        <p class="mt-2 p-3" style="flex: 2;">
+                            <%= data[i].content %>
+                        </p>
+                        <div class="p-3 border-t">
+                            <a href="<%= data[i].link %>" target="_blank"
+                                class="inline-block p-2 px-4 rounded bg-blue-600 shadow text-white">Download Pdf</a>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="/scripts.js"></script>
+</body>
+
+</html>
